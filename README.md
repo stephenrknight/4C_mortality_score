@@ -77,7 +77,7 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 
 ### `07_risk_tables.R`
 
-1. Prognos function.
+1. `prognos` function for easy cut-off table generation.
 2. Risk tables generation at specified cut-offs.
 
 ## Comparisons with pre-existing scores
@@ -85,8 +85,8 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 ### `08_score_comparisons.R`
 
 1. Generate risk scores.
-2. ff_aucroc function.
-3. Apply ff_auroc to risk scores.
+2. `ff_aucroc()` function for applying AUCROC and counts across multiple scores.
+3. Apply `ff_auroc()` to risk scores.
 
 
 ## XGBoost
