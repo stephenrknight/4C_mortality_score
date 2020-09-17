@@ -44,7 +44,7 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 ### `03_mice.R`
 
 1. Missing data inspection, description and characterisation .
-2. Basic MICE function.
+2. Basic `mice()` function and approach.
 
 ## Generalised additive models
 
@@ -52,7 +52,7 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 
 1. GAM with complete data.
 2. GAM with mice data.
-3. purrr methods for metrics, combining by Rubin's rules. 
+3. `purrr` methods for metrics, combining by Rubin's rules. 
 
 
 ## glmnet regression
@@ -60,8 +60,8 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 ### `05_lasso.R`
 
 1. Apply variables changes across imputed datasets.
-2. glmnet using MICE datasets.
-3. Extract glmnet coefficients, combine and scale.
+2. `glmnet()` using MICE datasets.
+3. Extract `glmnet` coefficients, combine and scale.
 
 ## 4C mortality score
 
