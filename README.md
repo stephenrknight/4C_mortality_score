@@ -11,6 +11,8 @@ Data should be prepared, cleaned, and carefully checked as per standard procedur
 
 Collaboration with consortium members is advised to ensure limitations and vargaries of data are understood. 
 
+We are grateful if any bugs or errors can be reported in issues. Many thanks!
+
 
 ## Data sharing
 
