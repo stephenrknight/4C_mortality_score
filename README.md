@@ -35,23 +35,23 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 
 ### `02_functions.R`
 
-1. ggplot templates / extraction functions
-2. Table defaults
-3. Prognostic scoring
+1. ggplot templates / extraction functions.
+2. Table defaults.
+3. Prognostic scoring.
 
 ## Multiple imputation by chained equations
 
 ### `03_mice.R`
 
-1. Missing data inspection, description and characterisation 
-2. Basic MICE function
+1. Missing data inspection, description and characterisation .
+2. Basic MICE function.
 
 ## Generalised additive models
 
 ### `04_gam.R`
 
-1. GAM with complete data
-2. GAM with mice data
+1. GAM with complete data.
+2. GAM with mice data.
 3. purrr methods for metrics, combining by Rubin's rules. 
 
 
@@ -59,18 +59,18 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 
 ### `05_lasso.R`
 
-1. Apply variables changes across imputed datasets
-2. glmnet using MICE datasets
-3. Extract glmnet coefficients, combine and scale
+1. Apply variables changes across imputed datasets.
+2. glmnet using MICE datasets.
+3. Extract glmnet coefficients, combine and scale.
 
 ## 4C mortality score
 
 ### `06_4c_mortality_score.R`
 
-1. 4C mortality score function
-2. Prognostic index discrimination using mice data
-3. Score distribution
-4. Calibration
+1. 4C mortality score function.
+2. Prognostic index discrimination using mice data.
+3. Score distribution.
+4. Calibration.
 
 
 ## Risk tables
@@ -78,22 +78,22 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 ### `07_risk_tables.R`
 
 1. Prognos function.
-2. Risk tables generation at specified cut-offs
+2. Risk tables generation at specified cut-offs.
 
 ## Comparisons with pre-existing scores
 
 ### `08_score_comparisons.R`
 
-1. Generate risk scores
-2. ff_aucroc function
-3. Apply ff_auroc to risk scores
+1. Generate risk scores.
+2. ff_aucroc function.
+3. Apply ff_auroc to risk scores.
 
 
 ## XGBoost
 
 ### `09_xgboost.R`
 
-1. Variable definition
-2. Derivation and validation matrices created
-3. XGBoost training
-4. Discrimination (AUROC)
+1. Variable definition.
+2. Derivation and validation matrices created.
+3. XGBoost training.
+4. Discrimination (AUROC).
