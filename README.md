@@ -97,3 +97,11 @@ https://github.com/SurgicalInformatics/cocin_ccp.
 2. Derivation and validation matrices created.
 3. XGBoost training.
 4. Discrimination (AUROC).
+
+## Decision curve analysis
+
+### `10_decision_curve_analysis.R`
+
+1. Apply comparison scores in derivation and validation data. 
+2. DCA: fit in derivation and predict in validation (recalibration of comparators). 
+3. DCA: fit and predict in validation data (recalibration of all).
