@@ -318,8 +318,8 @@ cs_north = cs_test %>%
   ff_relabel_df(cs)
 
 
-subjid_south = tmp_south %>% 
+subjid_south = cs_south %>% 
   pull(subjid)
 
-subjid_north = tmp_north %>% 
+subjid_north = cs_north %>% 
   pull(subjid)
