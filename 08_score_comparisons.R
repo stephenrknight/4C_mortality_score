@@ -60,9 +60,6 @@ cs_test_scores = cs_test %>%
        output = c("df_vector"),
        na_to_zeros = na_decision) %>% 
   
-  tongji(age = age, ldh = daily_ldh_lborres, lymph = daily_lymp_lborres, spo2 = oxy_vsorres, 
-         output = c("df_vector")) %>% 
-  
   adrop(spo2 = oxy_vsorres, sbp = sysbp_vsorres, 
         gcs = daily_gcs_vsorres, age = age,
         bun = daily_bun_lborres, sex = sex,
@@ -98,7 +95,7 @@ cs_test_scores = cs_test %>%
               temp = temp_vsorres, hr = hr_vsorres, sbp = sysbp_vsorres,
               output = c("df_vector"), na_to_zeros = na_decision) %>% 
   
-  xie_score(age = age, ldh = daily_ldh_lborres, lymph = daily_lymp_lborres, sats = oxy_vsorres,
+  xie_score(age = age, ldh = daily_ldh_lborres, lymph = daily_lymp_lborres, spo2 = oxy_vsorres,
             output = c("df_vector")) %>% 
   
   covid_gram(age = age, gcs = daily_gcs_vsorres, comorbid_gram = comorbid_gram, nlr = NLR,
