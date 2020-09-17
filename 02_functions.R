@@ -951,57 +951,6 @@ scap <- function(.data, rr, sbp, gcs, age,
 }
 
 
-# Tongji score -------------------------------------------------------------------------------------------
-tongji <- function(.data, age, ldh, lymph, spo2,
-                        output = c("vector", "components", "df_vector", "df_components")){
-  
-  .age = enquo(age)
-  .ldh = enquo(ldh)
-  .lymph = enquo(lymph)
-  .spo2 = enquo(spo2)
-  
-  out = .data %>% 
-    dplyr::mutate_at(vars(!! .age, !! .ldh, !! .lymph, !! .spo2), as.numeric) %>%
-    
-    mutate(
-      # tongji
-      tongji_age = !! .age * 0.047,
-      tongji_ldh = !! .ldh * 0.003, 
-      tongji_lymph = log(!! .lymph) * -1.094,
-      tongji_spo2 = !! .spo2 * -0.098, 
-      tongji_link = 4.559 + tongji_age + tongji_ldh + tongji_lymph + tongji_spo2,
-      tongji = boot::inv.logit((tongji_link))
-    )
-  
-  if(output == "vector"){
-    out %>% 
-      pull(tongji)
-  } else if(output == "components"){
-    out %>% 
-      select(starts_with("tongji"))
-  } else if(output == "df_vector"){
-    out %>% 
-      pull(tongji) %>% 
-      bind_cols(.data, tongji = .)
-  } else if(output == "df_components"){
-    out
-  }
-}
-
-# Example from paper
-# beta = c(4.559, 0.047, 0.003, -1.094, -0.098)
-# x = c(1, 59, 482, log(0.64), 85)
-# boot::inv.logit(beta %*% x)
-# 
-# tmp = tibble(
-#   age = 59,
-#   ldh = 482,
-#   lymph = 0.64,
-#   spo2 = 85)
-# 
-# tmp %>%
-#   tongji(age = age, ldh = ldh, lymph = lymph, spo2 = spo2)
-
 
 # adrop -----------------------------------------------------
 adrop <- function(.data, spo2, sbp, gcs, bun, age, sex,
@@ -1807,25 +1756,25 @@ covid_gram <- function(.data, age, infiltrates, haemoptysis, dyspnoea, gcs,
 
 
 # Xie score --------
-xie_score <- function(.data, age, ldh, lymph, sats,
+xie_score <- function(.data, age, ldh, lymph, spo2,
                       output = c("vector", "components", "df_vector", "df_components")){
   
   .age = enquo(age)
   .ldh = enquo(ldh)
   .lymph = enquo(lymph)
-  .sats = enquo(sats)
+  .spo2 = enquo(spo2)
   
   out = .data %>% 
-    dplyr::mutate_at(vars(!! .age, !! .ldh, !! .lymph, !! .sats), as.numeric) %>%
+    dplyr::mutate_at(vars(!! .age, !! .ldh, !! .lymph, !! .spo2), as.numeric) %>%
     
     mutate(
       # xie_score
       xie_score_age = !! .age * 0.047,
       xie_score_ldh = !! .ldh * 0.003,
       xie_score_lymph = !! .lymph * -1.094,
-      xie_score_sats = !! .sats * -0.098, 
+      xie_score_spo2 = !! .spo2 * -0.098, 
       
-      xie_score_link = 4.559 + xie_score_age + xie_score_ldh + xie_score_lymph + xie_score_sats,
+      xie_score_link = 4.559 + xie_score_age + xie_score_ldh + xie_score_lymph + xie_score_spo2,
       xie_score = boot::inv.logit((xie_score_link))
     )
   
@@ -1844,6 +1793,20 @@ xie_score <- function(.data, age, ldh, lymph, sats,
   }
 }
 
+
+# Example from paper
+# beta = c(4.559, 0.047, 0.003, -1.094, -0.098)
+# x = c(1, 59, 482, log(0.64), 85)
+# boot::inv.logit(beta %*% x)
+# 
+# tmp = tibble(
+#   age = 59,
+#   ldh = 482,
+#   lymph = 0.64,
+#   spo2 = 85)
+# 
+# tmp %>%
+#   xie_score(age = age, ldh = ldh, lymph = lymph, spo2 = spo2)
 
 
 
