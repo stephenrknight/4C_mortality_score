@@ -37,7 +37,7 @@ isaric_lasso <- function(.data, age, sex, ethnicity, comorbid, rr, spo2, gcs, cr
         TRUE ~ NA_real_),
       
       isaric_lasso_sex = case_when(
-        !! .sex == "male" ~ 1, # Changed from 0
+        !! .sex == "male" ~ 1,
         !! .sex == "female" ~ 0,
         TRUE ~ NA_real_),
       
@@ -117,7 +117,6 @@ sets_train %>%
   map(~ isaric_lasso(., age = age, sex = sex,  ethnicity = ethnicity_4levels, comorbid = no_comorbid, rr = rr_vsorres,
                      spo2 = oxy_vsorres, gcs = daily_gcs_vsorres, 
                      bun = daily_bun_lborres, crp = daily_crp_lborres,
-                     # plts = daily_plt_lborres, creat = daily_creat_lborres, nlr = NLR,
                      output = c("df_vector"), na_to_zeros = na_decision)
   ) %>% 
   map(~ roc(.$status, .$isaric_lasso) %>% 
@@ -125,7 +124,7 @@ sets_train %>%
   ) %>% 
   enframe() %>% 
   unnest_wider(value) %>% 
-  # summarise_all(mean)
+  summarise_all(mean)
 
 # Prognostic index discrimination in multiply imputed (mice) validation data ----------------------------------------
 sets_test %>% 
